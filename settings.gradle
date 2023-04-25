@@ -1,0 +1,31 @@
+
+//setting
+//rootProject.name = 'DsProject_3-tire'
+//include 'DsProject01_BT', 'DsProject01_DT', 'DsProject01_PT'
+
+//pt 모듈설정
+//project(':DsProject01_BT'){
+//	apply plugin:'java'
+//	apply plugin:'org.springframework.boot'
+//	bootJar {
+//		classifier = 'DsProject01_BT'
+//		}
+//} 
+
+//bt 모듈 설정
+//project(':DsProject01_PT'){
+//	apply plugin:'java'
+//	apply plugin:'org.springframework.boot'
+//	bootJar {
+//		classifier = 'DsProject01_PT'
+//		}
+//}
+
+//dt 모듈 설정
+//project(':DsProject01_DT'){
+//	apply plugin:'java'
+//	apply plugin:'org.springframework.boot'
+//	bootJar {
+//		classifier = 'DsProject01_DT'
+//		}
+//} 

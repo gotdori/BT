@@ -1,6 +1,5 @@
 
-//setting
-//rootProject.name = 'DsProject_3-tire'
+rootProject.name = 'DsProject_BT'
 //include 'DsProject01_BT', 'DsProject01_DT', 'DsProject01_PT'
 
 //pt 모듈설정

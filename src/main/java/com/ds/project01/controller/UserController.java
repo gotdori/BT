@@ -24,7 +24,7 @@ public class UserController {
 	public String user_write(RedirectAttributes redi) {
 		redi.addAttribute("deptList", service.deptList());
 		redi.addAttribute("hobbyList", service.hobbyList());
-		return "redirect:http://localhost:8082/user/write";
+		return "BT_write";
 	}
 
 	@PostMapping("/user/save")

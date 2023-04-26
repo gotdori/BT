@@ -32,7 +32,6 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
-//	implementation 'com.ds.project01:DsProjectDto:0.0.1-SNAPSHOT'
 	
 
 	// 2022.10.28[프뚜]: postgreSQL

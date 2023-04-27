@@ -22,7 +22,7 @@ import com.ds.project01.repository.UserRepository;
 
 @Service
 @Transactional//여러개 쿼리 데이터 실행시 하나라도 실패하면 성공했던 쿼리도 다 취소 
-public class UserService { //해놓고 보니 서비스를 유저, 취미 등으로 안나눴음
+public class BT_UserService { //해놓고 보니 서비스를 유저, 취미 등으로 안나눴음
 
 	@Autowired
 	private UserRepository userRepo;

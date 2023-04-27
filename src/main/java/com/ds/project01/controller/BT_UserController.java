@@ -1,6 +1,7 @@
 package com.ds.project01.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,24 +9,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ds.project01.domain.DeptEntity;
+import com.ds.project01.domain.HobbyEntity;
 import com.ds.project01.dto.HobbyDataDto;
 import com.ds.project01.dto.UserDto;
-import com.ds.project01.service.UserService;
+import com.ds.project01.service.BT_UserService;
 
-@Controller
-public class UserController {
+@RestController
+public class BT_UserController {
 
 	@Autowired
-	private UserService service;
+	private BT_UserService service;
 	
-	@GetMapping("/bt/write")
-	public String user_write(RedirectAttributes redi) {
-		redi.addAttribute("deptList", service.deptList());
-		redi.addAttribute("hobbyList", service.hobbyList());
-		return "BT_write";
+	
+	@GetMapping("/bt/deptList")
+	public List<DeptEntity> user_deptList() {
+		
+		return service.deptList();
 	}
+	
+	@GetMapping("/bt/hobbyList")
+	public List<HobbyEntity> user_hobbyList() {
+		
+		return service.hobbyList();
+	}
+	
 
 	@PostMapping("/user/save")
 	public String user_save(UserDto dto, HobbyDataDto hdDto) {
@@ -34,13 +46,13 @@ public class UserController {
 		return "redirect:/user/write";
 	}
 
-	@GetMapping("/admin/list")
-	public String admin_list(UserDto dto, Model model, String searchKeyword) {
+	@GetMapping("/bt/list")
+	public Model admin_list(UserDto dto, Model model, String searchKeyword) {
 		
 		model.addAttribute("hobbyList", service.hobbyList());
 		model.addAttribute("deptList", service.deptList());
 		model.addAttribute("adminList", service.adminList(searchKeyword));
-		return "admin/list";
+		return model;
 	}
 	
 	//검색한 리스트 화면을 고정한 상태로 view를 보이고 싶었음. 그래서 비동기인 ajax를 사용하기 위해 json형태로 데이터를 받으니 @ResponseBody

@@ -53,17 +53,19 @@ public class BT_UserService { //해놓고 보니 서비스를 유저, 취미 등
 		return userRepo.findByUserNmContaining(searchKeyword);
 	}
 	
-	public void insert(UserDto dto, HobbyDataDto hdDto) {
+	public void insert(UserDto dto) {
 		UserEntity entity = UserEntity.toUserEntity(dto);
 		userRepo.save(entity);
-		
-		HobbyDataDelete(dto.getUserId());	//유저취미 업데이트하기 위해 취미 데이터를 먼저 싹 지우고 밑에서 다시 추가함
+	}
+	
+	public void hobbyDataInsert(HobbyDataDto hdDto) {
+		HobbyDataDelete(hdDto.getUserId());	//유저취미 업데이트하기 위해 취미 데이터를 먼저 싹 지우고 밑에서 다시 추가함
 		String splitChoice = hdDto.getHobbyCd();	//dto로 취미코드 1,2,3 받은거 저장
 		String[] ArraysStr = splitChoice.split(",");
 		HobbyDataDto hobbyDataDto = new HobbyDataDto();	//빈 Dto 만들어서 취미데이터 넣어줌
 		for(String s : ArraysStr) {
 			hobbyDataDto.setHobbyCd(s);
-			hobbyDataDto.setUserId(dto.getUserId());
+			hobbyDataDto.setUserId(hdDto.getUserId());
 			HobbyDataEntity hobbyDataEntity = HobbyDataEntity.toHobbyDataEntity(hobbyDataDto); //Dto를 entity로 변환
 			HobbyDataInsert(hobbyDataEntity); //취미데이터도 저장
 		}
@@ -76,10 +78,11 @@ public class BT_UserService { //해놓고 보니 서비스를 유저, 취미 등
 		userRepo.delete(entity);
 	}
 	
-	public UserEntity view(UserDto userDto) {
-		UserEntity entity = UserEntity.toUserEntity(userDto);
+	public UserEntity view(String userId) {
+		UserDto dto = new UserDto();
+		dto.setUserId(userId);
+		UserEntity entity = UserEntity.toUserEntity(dto);
 		UserEntity tempentity = userRepo.findByUserId(entity.getUserId());
-		
 		
 		return tempentity;
 	}

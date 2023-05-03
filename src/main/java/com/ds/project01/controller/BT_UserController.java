@@ -64,7 +64,6 @@ public class BT_UserController {
 	
 	@GetMapping("/bt/hobbyDataList")
 	List<HobbyDataEntity> HobbyDataList(String userId){
-		System.out.println("ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ"+userId);
 		return service.HobbyDataView(userId);
 	}
 	

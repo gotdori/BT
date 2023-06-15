@@ -37,14 +37,11 @@ public class BT_UserService {
 		return userRepo.findByUserNmContaining(searchKeyword);
 	}
 	
-	public void insert(UserDto dto) {
-		UserEntity entity = UserEntity.toUserEntity(dto);
+	public void insert(UserEntity entity) {
 		userRepo.save(entity);
 	}
 	
-	public void delete(UserDto dto) {
-		UserEntity entity = UserEntity.toUserEntity(dto);
-		System.out.println(dto);
+	public void delete(UserEntity entity) {
 		userRepo.delete(entity);
 	}
 	

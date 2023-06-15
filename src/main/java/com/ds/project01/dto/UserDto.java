@@ -1,7 +1,7 @@
 package com.ds.project01.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+
+import com.ds.project01.constant.Role;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,22 +12,22 @@ import lombok.ToString;
 @ToString
 public class UserDto {
 	
-	@NotBlank(message = "ID은 필수 입력 값입니다.")
 	private String userId;
-	@NotBlank(message = "이름은 필수 입력 값입니다.")
+	
+	private String userPw;
+	
 	private String userNm;
 	
-	@NotEmpty(message = "이메일은 필수 입력 값입니다.")
 	private String userEmlAddr;
 	
-	@NotEmpty(message = "부서명은 필수 입력 값입니다.")
 	private String deptNo;
 	
-	@NotEmpty(message = "전화번호는 필수 입력 값입니다.")
 	private String userTelno;
 	
 	private String userAddr;
 	
 	private String userAprvYn="n";
+	
+	private Role role;
 	
 }

@@ -2,10 +2,8 @@ package com.ds.project01.controller;
 
 import java.util.List;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,9 +51,9 @@ public class BT_ApiController {
 	}
 
 	@PostMapping("/bt/userSave")
-	public ResponseEntity<UserDto> user_save(@RequestBody UserDto dto) {
-		userService.insert(dto);
-		return ResponseEntity.ok(dto);
+	public ResponseEntity<UserEntity> user_save(@RequestBody UserEntity entity) {
+		userService.insert(entity);
+		return ResponseEntity.ok(entity);
 	}
 	
 	@PostMapping("/bt/hobbyDataSave")
@@ -77,11 +75,11 @@ public class BT_ApiController {
 	}
 	
 	@PostMapping("/bt/delete")
-	public ResponseEntity<UserDto> user_delete(@RequestBody UserDto dto) {
-		System.out.println(dto);
-		hobbyService.HobbyDataDelete(dto.getUserId());
-		userService.delete(dto);
-		return ResponseEntity.ok(dto);
+	public ResponseEntity<UserEntity> user_delete(@RequestBody UserDto dto) {
+		UserEntity entity = UserEntity.toUserEntity(dto);
+		hobbyService.HobbyDataDelete(entity.getUserId());
+		userService.delete(entity);
+		return ResponseEntity.ok(entity);
 	}
 	
 	@GetMapping("/bt/idCheck")

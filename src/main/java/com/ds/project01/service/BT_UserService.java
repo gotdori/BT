@@ -21,20 +21,20 @@ public class BT_UserService {
 	private UserRepository userRepo;
 	
 	
-	public List<UserEntity> adminList(String searchKeyword){
+	public List<UserEntity> adminList(String searchName){
 		List<UserEntity> adminlist = new ArrayList<>();
 		
-		if (searchKeyword == null) { //검색 키워드 없으면
+		if (searchName == null) { //검색 키워드 없으면
 			adminlist = userRepo.findAll(); //전체리스트 출력
 		} else {					//있으면
-			adminlist = seachNm(searchKeyword); //검색한 리스트 출력
+			adminlist = seachNm(searchName); //검색한 리스트 출력
 		}
 		
 		return adminlist;
 	}
 	
-	public List<UserEntity> seachNm(String searchKeyword){
-		return userRepo.findByUserNmContaining(searchKeyword);
+	public List<UserEntity> seachNm(String searchName){
+		return userRepo.findByUserNmContaining(searchName);
 	}
 	
 	public void insert(UserEntity entity) {

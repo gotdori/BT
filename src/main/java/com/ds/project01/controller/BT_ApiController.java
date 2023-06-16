@@ -45,9 +45,9 @@ public class BT_ApiController {
 	}
 	
 	@GetMapping("/bt/list")
-	public List<UserEntity> admin_list(String searchKeyword) {
+	public List<UserEntity> admin_list(String searchName) {
 		
-		return userService.adminList(searchKeyword);
+		return userService.adminList(searchName);
 	}
 
 	@PostMapping("/bt/userSave")
